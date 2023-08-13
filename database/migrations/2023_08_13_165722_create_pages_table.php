@@ -16,10 +16,17 @@ return new class extends Migration
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
             $table->string('title')->unique();
+            $table->string('slug')->unique();
             $table->string('description')->nullable();
             $table->string('meta_title')->nullable();
             $table->string('meta_description')->nullable();
+            $table->string('meta_description_1')->nullable();
+            $table->string('meta_description_2')->nullable();
+            $table->string('meta_description_3')->nullable();
+            $table->string('meta_description_4')->nullable();
+            $table->string('status')->default('not published');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

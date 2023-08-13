@@ -13,9 +13,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['prefix'=>'pages'], function () {
+    Route::get('/', \App\Http\Controllers\page\IndexController::class);
+    Route::get('/{page:slug}', \App\Http\Controllers\page\ShowController::class);
+}
+);
 
-Route::get('/',[PageController::class,'index']);
-Route::get('/page/{id}',[PageController::class,'show']);
+
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
